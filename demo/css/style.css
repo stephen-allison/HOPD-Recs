@@ -174,11 +174,13 @@ body{
 }
 
 .hopd-pic{
-    background: url('../img/HANDI-HOPD.jpg') no-repeat ;
-    border: 1px solid #ECF0F1;
     display: block;
-    height: 150px;
-    width: 600px;
+    height: 75px;
+    width: 300px;
+    background-image: url('../img/HANDI-HOPD.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 .patient-stats{
