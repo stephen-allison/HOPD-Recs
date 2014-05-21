@@ -2,7 +2,7 @@ HANDI-HOPD examples
 ========
 
 Collection of examples to demonstrate the use of the HANDI-HOPD REST apis.
-Forked from Marand ehrscape.com REST apis.
+Forked from Marand ehrscape.com REST apis - see dev.ehrscape.com
 
 Applications:
 * **demo**: sources to the demo app from the dev.ehrscape.com
