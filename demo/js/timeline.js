@@ -165,7 +165,6 @@
                     if(data[i].children){
 
                         this.details += '<li>' + this.capitaliseFirstLetter(data[i].label) + '</li>';
-
                         this.contentHTML(data[i].children);
 
                         this.details += '</ul>';
