@@ -33,9 +33,9 @@ $(document).ready(function () {
 
     // ehrscape API
     var baseUrl = "https://rest.ehrscape.com/rest/v1";
-    var ehrId = "6f81d77a-26ef-4cf4-926f-40ccfafd8a1f";
-    var username = 'guidemo';
-    var password = 'gui?!demo123';
+    var ehrId = "168f8b85-f70c-4342-ab42-51856cf1be14";
+    var username = 'handi';
+    var password = 'RPEcC859';
 
     var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var sessionId;

@@ -165,12 +165,20 @@ body{
 }
 
 .doc-pic{
-    background: url('../img/doctor2.png') 52% 45% no-repeat;
+    background: url('../img/doctor.png') 52% 45% no-repeat ;
     border: 3px solid #ECF0F1;
     display: block;
     height: 75px;
     width: 75px;
     border-radius: 50%;
+}
+
+.hopd-pic{
+    background: url('../img/HANDI-HOPD.jpg') no-repeat ;
+    border: 1px solid #ECF0F1;
+    display: block;
+    height: 150px;
+    width: 600px;
 }
 
 .patient-stats{
