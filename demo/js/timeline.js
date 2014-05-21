@@ -8,9 +8,9 @@
     var pluginName = "ehrscapeTimeline",
         defaults = {
             baseUrl: "https://rest.ehrscape.com/rest/v1",
-            ehrId: "6f81d77a-26ef-4cf4-926f-40ccfafd8a1f",
-            username: "guidemo",
-            password: "gui?!demo123"
+            ehrId: "168f8b85-f70c-4342-ab42-51856cf1be14",
+            username: "handi",
+            password: "RPEcC859"
         };
 
     function Plugin( element, options ) {

@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     $('#timeline-example').ehrscapeTimeline();
 
-    // ehrscape API
+    // ehrscape API - handi domain and Mary Wlikinson in handi domain = subjectid 740
     var baseUrl = "https://rest.ehrscape.com/rest/v1";
     var ehrId = "168f8b85-f70c-4342-ab42-51856cf1be14";
     var username = 'handi';
