@@ -7,6 +7,5 @@ cabal-dev
 *.chs.h
 *.swp
 _cache
-_site
 cabal.sandbox.config
 .cabal-sandbox/

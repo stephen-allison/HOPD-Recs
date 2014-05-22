@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content>
+    <meta name="author" content>
+    <title>Example Blog Post</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/syntax.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <style>
+        body { 
+            font-family: 'Open Sans', sans-serif;
+        }
+        body { margin-top: 80px; }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">My Company</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Warp Drive</a></li>
+                <li><a href="#">Fusion Reactor</a></li>
+                <li><a href="#">Sufficiently Smart Compiler</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Services</li>
+                <li><a href="#">Enlightenment</a></li>
+              </ul>
+              <li><a href="../archive.html">Blog</a></li>
+              <li><a href="../pages/team.html">Team</a></li>
+              <li><a href="../pages/about.html">About Us</a></li>
+              <li><a href="../pages/contact.html">Contact </a></li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <h2>Example Blog Post</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est in neque luctus eleifend. Sed tincidunt vestibulum facilisis. Aenean ut pulvinar massa.</p>
+<p>Some math:</p>
+<p><span class="math">\[
+\begin{aligned}
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \\   \nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
+\nabla \cdot \vec{\mathbf{B}} &amp; = 0 \end{aligned}
+\]</span></p>
+<p>Some code:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">newtype</span> <span class="dt">MonadMonoid</span> m a <span class="fu">=</span> <span class="dt">MonadMonoid</span> {<span class="ot"> unMonad ::</span> a <span class="ot">-&gt;</span> m a }
+
+<span class="kw">instance</span> <span class="dt">Monad</span> m <span class="ot">=&gt;</span> <span class="dt">Monoid</span> (<span class="dt">MonadMonoid</span> m a) <span class="kw">where</span>
+  mempty <span class="fu">=</span> <span class="dt">MonadMonoid</span> return
+  mappend f g <span class="fu">=</span> <span class="dt">MonadMonoid</span> (f <span class="fu">&gt;=&gt;</span> g)</code></pre>
+<p>Fin.</p>
+      <footer>
+  <p class="pull-right"><a href="#">Back to top</a></p>
+  <p>© 2013 My Company · <a href="../pages/privacy.html">Privacy</a> · <a href="../pages/tos.html">Terms</a></p>
+</footer>
+
+    </div>
+
+    </div><!-- /.container -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/holder.js"></script>
+  </body>
+</html>
