@@ -9,7 +9,9 @@
         defaults = {
             baseUrl: "https://rest.ehrscape.com/rest/v1",
  //           ehrId: "168f8b85-f70c-4342-ab42-51856cf1be14",
-            ehrId: "879be82a-0a15-44fd-95c3-cef42f9560c3",
+         //   ehrId: "879be82a-0a15-44fd-95c3-cef42f9560c3",
+            ehrId: "a3f30697-1223-473e-bd4b-0f72e64d7a24",
+
             username: "handi",
             password: "RPEcC859"
         };
