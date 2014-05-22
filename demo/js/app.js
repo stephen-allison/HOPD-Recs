@@ -33,7 +33,8 @@ $(document).ready(function () {
 
     // ehrscape API - handi domain and Mary Wlikinson in handi domain = subjectid 740
     var baseUrl = "https://rest.ehrscape.com/rest/v1";
-    var ehrId = "168f8b85-f70c-4342-ab42-51856cf1be14";
+//    var ehrId = "168f8b85-f70c-4342-ab42-51856cf1be14";
+    var ehrId = "879be82a-0a15-44fd-95c3-cef42f9560c3";
     var username = 'handi';
     var password = 'RPEcC859';
 
