@@ -357,6 +357,61 @@ $(document).ready(function () {
         });
     }
 
+    function getUKAllergies() {
+        return $.ajax({
+            url: baseUrl + "/query/?aql=select%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0025%5D%2Fitems%5Bat0021%5D%2Fvalue%20as%20Date_recorded%2C%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0002%5D%2Fvalue%20as%20Causative_agent%20from%20EHR%20e%5Behr_id%2Fvalue%3D'a3f30697-1223-473e-bd4b-0f72e64d7a24'%5D%20contains%20COMPOSITION%20a%20contains%20EVALUATION%20a_a%5BopenEHR-EHR-EVALUATION.adverse_reaction_uk.v1%5D%20offset%200%20limit%20100",
+           type: 'GET',
+            headers: {
+                "Ehr-Session": sessionId
+            },
+            success: function (res) {
+                for (var i = 0; i < res.resultSet.length; i++) {
+                    $('ul.allergies').append('<li>'  + formatDate(res.resultSet[i].Date_recorded.value,false) + ' - ' + res.resultSet[i].Causative_agent.value + '</li>');
+                }
+            },
+            error: function(){alert('fail');}
+
+        });
+    }
+
+    function getUKMedications() {
+        return $.ajax({
+            //url: baseUrl + "/query/?aql=select%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0025%5D%2Fitems%5Bat0021%5D%2Fvalue%20as%20Date_recorded%2C%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0002%5D%2Fvalue%20as%20Causative_agent%20from%20EHR%20e%5Behr_id%2Fvalue%3D'a3f30697-1223-473e-bd4b-0f72e64d7a24'%5D%20contains%20COMPOSITION%20a%20contains%20EVALUATION%20a_a%5BopenEHR-EHR-EVALUATION.adverse_reaction_uk.v1%5D%20offset%200%20limit%20100",
+            url: baseUrl + "/query/?aql="+ encodeURIComponent("select a_b/items[at0001]/value/value as value, a_b/items[at0019]/items[at0003]/value/value as dose         from EHR e[ehr_id/value='a3f30697-1223-473e-bd4b-0f72e64d7a24']         contains COMPOSITION a         contains (             INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.medication_order_uk.v1]         contains CLUSTER a_b[openEHR-EHR-CLUSTER.medication_item.v1]         and         CLUSTER m_s[openEHR-EHR-CLUSTER.medication_status.v1])         where m_s/items[at0030]/value/defining_code/code_string='at0033'         offset 0 limit 20"),
+            //           url: baseUrl + "/query/?aql="+ encodeURIComponent("SELECT c FROM EHR[ehr_id/value='" + ehrId + "'] CONTAINS COMPOSITION c ORDER BY c/context/start_time DESC FETCH 20"),
+            type: 'GET',
+            headers: {
+                "Ehr-Session": sessionId
+            },
+            success: function (res) {
+                for (var i = 0; i < res.resultSet.length; i++) {
+                    $('ul.medications').append('<li>' + " " + res.resultSet[i].value + '<br/>' + res.resultSet[i].dose + ' </li>');
+                }
+            },
+            error: function(){alert('fail');}
+
+        });
+    }
+
+    function getUKProblems() {
+        return $.ajax({
+            //url: baseUrl + "/query/?aql=select%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0025%5D%2Fitems%5Bat0021%5D%2Fvalue%20as%20Date_recorded%2C%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0002%5D%2Fvalue%20as%20Causative_agent%20from%20EHR%20e%5Behr_id%2Fvalue%3D'a3f30697-1223-473e-bd4b-0f72e64d7a24'%5D%20contains%20COMPOSITION%20a%20contains%20EVALUATION%20a_a%5BopenEHR-EHR-EVALUATION.adverse_reaction_uk.v1%5D%20offset%200%20limit%20100",
+            url: baseUrl + "/query/?aql="+ encodeURIComponent("select     a_a/data[at0001]/items[at0002]/value/value as value,     a_a as Problem_Diagnosis3,     a_a/data[at0001]/items[at0003]/value as Date_of_Onset from EHR e[ehr_id/value='a3f30697-1223-473e-bd4b-0f72e64d7a24'] contains COMPOSITION a contains EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] offset 0 limit 20"),
+            //           url: baseUrl + "/query/?aql="+ encodeURIComponent("SELECT c FROM EHR[ehr_id/value='" + ehrId + "'] CONTAINS COMPOSITION c ORDER BY c/context/start_time DESC FETCH 20"),
+            type: 'GET',
+            headers: {
+                "Ehr-Session": sessionId
+            },
+            success: function (res) {
+                for (var i = 0; i < res.resultSet.length; i++) {
+                    $('ul.problems').append('<li>' + formatDate(res.resultSet[i].Date_of_Onset.value,false) + " " + res.resultSet[i].value + ' </li>');
+                }
+            },
+            error: function(){alert('fail');}
+
+        });
+    }
+
     function getMedications() {
         return $.ajax({
             url: baseUrl + "/view/" + ehrId + "/medication",
@@ -381,7 +436,7 @@ $(document).ready(function () {
             },
             success: function (res) {
                 for (var i = 0; i < res.length; i++) {
-                    $('ul.problems').append('<li>' +  res[i].diagnosis + "<br/>| READV2 | " + res[i].diagnosis_code + ' |</li>');
+                    $('ul.problems').append('<li>' + res[i].onset_date + " " + res[i].diagnosis + "<br/>| RV2 | " + res[i].diagnosis_code + ' |</li>');
                 }
             }
         });
@@ -652,9 +707,9 @@ $(document).ready(function () {
                 getSpo2(),
                 getTemperature(),
                 getPulse(),
-                getAllergies(),
-                getMedications(),
-                getProblems(),
+                getUKProblems(),
+                getUKMedications(),
+                getUKAllergies(),
                 getLabs()
             ).then(logout)
         });
