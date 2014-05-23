@@ -34,7 +34,9 @@ $(document).ready(function () {
     // ehrscape API - handi domain and Mary Wlikinson in handi domain = subjectid 740
     var baseUrl = "https://rest.ehrscape.com/rest/v1";
 //    var ehrId = "168f8b85-f70c-4342-ab42-51856cf1be14";
-    var ehrId = "879be82a-0a15-44fd-95c3-cef42f9560c3";
+//    var ehrId = "879be82a-0a15-44fd-95c3-cef42f9560c3";
+    var ehrId = "a3f30697-1223-473e-bd4b-0f72e64d7a24";
+
     var username = 'handi';
     var password = 'RPEcC859';
 
@@ -102,7 +104,7 @@ $(document).ready(function () {
                 if (imageUrl !== undefined) {
                     $('.patient-pic').css('background', 'url(' + imageUrl + ')');
                 } else {
-                    $('.patient-pic').css('background', 'url(img/' + gender.toLowerCase() + '.png)');
+                    $('.patient-pic').css('background', 'url(./img/conchita.jpg) center no-repeat');
                 }
             }
         });
@@ -379,7 +381,7 @@ $(document).ready(function () {
             },
             success: function (res) {
                 for (var i = 0; i < res.length; i++) {
-                    $('ul.problems').append('<li>' + res[i].diagnosis + '</li>');
+                    $('ul.problems').append('<li>' +  res[i].diagnosis + "<br/>| READV2 | " + res[i].diagnosis_code + ' |</li>');
                 }
             }
         });

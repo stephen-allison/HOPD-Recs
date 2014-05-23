@@ -214,7 +214,7 @@
 
             for(var i=0; i<data.length; i++){
 
-                var title = data[i].metadata.templateId;
+                var title = data[i].metadata.name;
 
                 if(title != "Allergies" && data[i].composition.children){
 
