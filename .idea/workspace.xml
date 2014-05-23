@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bb3d862-5a3a-4e4f-8fb4-098135ac0428" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hakyll-bootstrap/img/Smart_logo_175x96-reverse1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hakyll-bootstrap/img/fhir-logo-www.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hakyll-bootstrap/img/openehr-logoweb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hakyll-bootstrap/_site/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HOPD.iws" />
@@ -42,7 +38,7 @@
       <file leaf-file-name="nav.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hakyll-bootstrap/templates/nav.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8540146" vertical-offset="204" max-vertical-offset="675">
+            <state vertical-scroll-proportion="1.3503649" vertical-offset="0" max-vertical-offset="675">
               <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -667,12 +663,16 @@
       <created>1400802991745</created>
       <updated>1400802991745</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated home page&#10;">
+      <created>1400803262683</created>
+      <updated>1400803262683</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="22" width="1260" height="760" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1040,7 +1040,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hakyll-bootstrap/templates/nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8540146" vertical-offset="204" max-vertical-offset="675">
+        <state vertical-scroll-proportion="1.3503649" vertical-offset="0" max-vertical-offset="675">
           <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
