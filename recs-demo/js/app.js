@@ -374,6 +374,15 @@ $(document).ready(function () {
         });
     }
 
+    var medsData = {results:[]};
+    var idCounter = 0;
+    function addMedication(info) {
+        info.id = 'id'+idCounter++;
+        info.status = 'No action taken';
+        medsData.results.push(info);
+        console.log('added medication');
+    }
+
     function getUKMedications() {
         return $.ajax({
             //url: baseUrl + "/query/?aql=select%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0025%5D%2Fitems%5Bat0021%5D%2Fvalue%20as%20Date_recorded%2C%20a_a%2Fdata%5Bat0001%5D%2Fitems%5Bat0002%5D%2Fvalue%20as%20Causative_agent%20from%20EHR%20e%5Behr_id%2Fvalue%3D'a3f30697-1223-473e-bd4b-0f72e64d7a24'%5D%20contains%20COMPOSITION%20a%20contains%20EVALUATION%20a_a%5BopenEHR-EHR-EVALUATION.adverse_reaction_uk.v1%5D%20offset%200%20limit%20100",
@@ -385,12 +394,46 @@ $(document).ready(function () {
             },
             success: function (res) {
                 for (var i = 0; i < res.resultSet.length; i++) {
-                    $('ul.medications').append('<li>' + " " + res.resultSet[i].value + '<br/>' + res.resultSet[i].dose + ' </li>');
+                    addMedication(res.resultSet[i]);
                 }
+                renderMedications();
             },
             error: function(){alert('fail');}
 
         });
+    }
+
+    function renderMedications() {
+        for (var i = 0; i < medsData.results.length; i++) {
+            medInfo = medsData.results[i];
+            $('div.medications').append(makeMedicationRowHTML(medInfo.value, medInfo.dose, medInfo.id));
+        }
+        $('.action-choice').change(function(){alert('!')});
+    }
+
+    function makeMedicationRowHTML(medName, medDose, medId) {
+        var template_string = 
+            ['<div class="panel panel-primary"><div class="panel-heading">',
+             '<h3 class="panel-title">{{medName}}</h3>',
+             makeActionSelectionHTML(medId),
+             '</div>',
+             '<div class="panel-body">{{medDose}}<br/>No longer taken</div>',
+             '</div>',
+
+             ].join('')
+        template = Handlebars.compile(template_string);
+        return template({medName:medName, medDose:medDose});
+    }
+
+    function makeActionSelectionHTML(medId) {
+        template_string = [
+        '<select id="{{medId}}" class="action-choice">',
+        '<option value="as-prescribed">Taking as prescribed</option>',
+        '<option value="not-taking">Not taking</option>',
+        '<option value="changed-dose">Taking, but not as prescribed</option>',
+        '</select>'].join('');
+        template = Handlebars.compile(template_string);
+        return template({medId:medId});
     }
 
     function getUKProblems() {
