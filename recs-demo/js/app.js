@@ -378,9 +378,24 @@ $(document).ready(function () {
     var idCounter = 0;
     function addMedication(info) {
         info.id = 'id'+idCounter++;
-        info.status = 'No action taken';
+        setMedicationAction(info, 'No Action Taken');
         medsData.results.push(info);
         console.log('added medication');
+    }
+    function getMedication(id) {
+        var match = null;
+        for (var i=0; i < medsData.results.length; i++) {
+            var info = medsData.results[i];
+
+            if (info.id == id) {
+                match = info;
+                break;
+            }
+        }
+        return match;
+    }
+    function setMedicationAction(medication, action) {
+        medication.action = action;
     }
 
     function getUKMedications() {
@@ -404,36 +419,48 @@ $(document).ready(function () {
     }
 
     function renderMedications() {
+        $('div.medications').empty();
         for (var i = 0; i < medsData.results.length; i++) {
             medInfo = medsData.results[i];
-            $('div.medications').append(makeMedicationRowHTML(medInfo.value, medInfo.dose, medInfo.id));
+            $('div.medications').append(makeMedicationRowHTML(medInfo));
         }
-        $('.action-choice').change(function(){alert('!')});
+        $('.action-choice').change(function(event) {
+            var medication = getMedication(this.id);
+            setMedicationAction(medication, this.value);
+            renderMedications();
+        });
     }
 
-    function makeMedicationRowHTML(medName, medDose, medId) {
+    function makeMedicationRowHTML(medication) {
         var template_string = 
             ['<div class="panel panel-primary"><div class="panel-heading">',
-             '<h3 class="panel-title">{{medName}}</h3>',
-             makeActionSelectionHTML(medId),
+             '<h3 class="panel-title">{{value}}</h3>',
+             makeActionSelectionHTML(medication),
              '</div>',
-             '<div class="panel-body">{{medDose}}<br/>No longer taken</div>',
-             '</div>',
-
+             '<div class="panel-body">{{dose}}<br/>{{action}}</div>',
+             '</div>'
              ].join('')
         template = Handlebars.compile(template_string);
-        return template({medName:medName, medDose:medDose});
+        return template(medication);
     }
 
-    function makeActionSelectionHTML(medId) {
+    function makeActionSelectionHTML(medication) {
+        var selections = {
+            as_prescribed:'',
+            not_taking:'',
+            changed_dose: ''
+        };
+
+        selections[medication.action] = 'selected';
+
         template_string = [
-        '<select id="{{medId}}" class="action-choice">',
-        '<option value="as-prescribed">Taking as prescribed</option>',
-        '<option value="not-taking">Not taking</option>',
-        '<option value="changed-dose">Taking, but not as prescribed</option>',
+        '<select id="{{id}}" class="action-choice">',
+        '<option value="as_prescribed"'+selections.as_prescribed+'>Taking as prescribed</option>',
+        '<option value="not_taking"'+selections.not_taking+'>Not taking</option>',
+        '<option value="changed_dose"'+selections.changed_dose+'>Taking, but not as prescribed</option>',
         '</select>'].join('');
         template = Handlebars.compile(template_string);
-        return template({medId:medId});
+        return template(medication);
     }
 
     function getUKProblems() {
